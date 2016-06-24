@@ -20,7 +20,7 @@ module OmniAuth
                     name:           raw_info['user']['name'],
                     username:       raw_info['user']['userid'],
                     email:          raw_info['user']['email'],
-                    image:          raw_info['user']['profilepicture']
+                    image:          "https://api.dataporten.no/userinfo/v1/user/media/" + raw_info['user']['profilepicture']
                 }
             end
 
