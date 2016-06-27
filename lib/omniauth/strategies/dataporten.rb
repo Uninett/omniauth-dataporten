@@ -19,8 +19,8 @@ module OmniAuth
                 {
                     name:           raw_info['user']['name'],
                     username:       raw_info['user']['userid'],
-                    email:          raw_info['user']['email'],
-                    image:          "https://api.dataporten.no/userinfo/v1/user/media/" + raw_info['user']['profilepicture']
+                    email:          raw_info['user']['email']
+                    #image:          raw_info['user']['profilepicture']
                 }
             end
 
@@ -35,7 +35,7 @@ module OmniAuth
             private
 
             def callback_url
-                full_host + script_name + callback_path
+                options[:redirect_url] + script_name + callback_path
             end
 
             #def request_phase
@@ -45,3 +45,5 @@ module OmniAuth
         end
     end
 end
+
+OmniAuth.config.add_camelization 'dataporten', 'Dataporten'

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'omniauth-dataporten'
 
 describe OmniAuth::Strategies::Dataporten do
 
@@ -17,9 +18,8 @@ describe OmniAuth::Strategies::Dataporten do
                                              site: site,
                                              authorize_url: authorization_url,
                                              token_url: token_url
-                                         },
-                                         redirect_url: 'http://localhost:9292/callback_url'
-    )
+                                         }
+  )
   end
 
   subject { dataporten_service }
@@ -43,18 +43,6 @@ describe OmniAuth::Strategies::Dataporten do
       its(:site) { is_expected.to eq site }
       its(:authorize_url) { is_expected.to eq authorization_url }
       its(:token_url) { is_expected.to eq token_url }
-    end
-  end
-
-  describe 'redirect_url' do
-    context 'with defaults' do
-      subject { dataporten_service.options }
-      its(:redirect_url) { is_expected.to be_nil }
-    end
-
-    context 'with customs' do
-      subject { enterprise.options }
-      its(:redirect_url) { is_expected.to eq 'http://localhost:9292/callback_url' }
     end
   end
 
